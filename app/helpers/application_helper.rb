@@ -1,9 +1,9 @@
 module ApplicationHelper
   def fizzbuzz(all_values, user_favorties = [])
-    list = all_values.collect do |count|
+    list = all_values.collect do |val|
       content_tag(:tr) do
-        content_tag(:td, fizz_or_buzz(count)) +
-        content_tag(:td, fav_count(count, user_favorties))
+        content_tag(:td, val) +
+        content_tag(:td, fav_count(val, user_favorties))
       end
     end
 
@@ -11,16 +11,6 @@ module ApplicationHelper
   end
 
   private
-
-    def fizz_or_buzz(count)
-      if count % 3 == 0
-        'Fizz'
-      elsif count % 5 == 0
-        'Buzz'
-      else
-        count
-      end
-    end
 
     def fav_count(count, user_favorties)
       if user_favorties.include?(count.to_s)
